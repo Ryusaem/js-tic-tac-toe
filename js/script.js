@@ -1,10 +1,5 @@
-// Import the readline module
-// const readline = require("readline").createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-// });
-
-let gameBoard = () => {
+// Game Board Module
+function gameBoard() {
   const rows = 3;
   const cols = 3;
   const board = [];
@@ -25,11 +20,6 @@ let gameBoard = () => {
 
   // Print the board
   const printBoard = () => {
-    // const boardWithCellValues = board.map((row) =>
-    //   row.map((cell) => cell.getValue())
-    // );
-    // console.log(boardWithCellValues);
-
     const boardWithCellValues = board
       .map((row) => row.map((cell) => cell.getValue()).join(" | "))
       .join("\n---------\n");
@@ -88,6 +78,7 @@ let gameBoard = () => {
     return false;
   };
 
+  // Reset the board
   const resetBoard = () => {
     return initializeBoard(rows, cols);
   };
@@ -102,7 +93,7 @@ let gameBoard = () => {
     checkWin, // Check if there is a winner
     resetBoard, // Reset the board
   };
-};
+}
 
 // Create a cell
 function createCell() {
@@ -167,6 +158,7 @@ function GameController(
     }
   };
 
+  // Update the score
   const updateScore = () => {
     activePlayer.score++; // Update the score;
     console.log(
@@ -174,6 +166,7 @@ function GameController(
     );
   };
 
+  // Print scores
   const printScores = () => {
     console.log(
       `Score: ${players[0].name}: ${players[0].score}, ${players[1].name}: ${players[1].score}`
@@ -227,33 +220,33 @@ function GameController(
   };
 }
 
-// let con = console.log;
-
-// con(gameBoard().printBoard());
-
+// Start the game
 const game = GameController();
-// check rows (it works)
+
+// Test cases
+
+// Check Rows (it works)
 // game.playRound(0, 0); // Player One
 // game.playRound(1, 0); // Player Two
 // game.playRound(0, 1); // Player One
 // game.playRound(1, 1); // Player Two
 // // game.playRound(0, 2); // Player One
 
-// check columns (it works)
+// Check Columns (it works)
 // game.playRound(0, 0); // Player One
 // game.playRound(0, 1); // Player Two
 // game.playRound(1, 0); // Player One
 // game.playRound(1, 1); // Player Two
 // game.playRound(2, 0); // Player One
 
-// check diagonals (first) (it works)
+// Check Diagonals (first) (it works)
 // game.playRound(0, 0); // Player One
 // game.playRound(0, 1); // Player Two
 // game.playRound(1, 1); // Player One
 // game.playRound(1, 0); // Player Two
 // game.playRound(2, 2); // Player One
 
-// check diagonals (second) (it works)
+// Check Diagonals (second) (it works)
 game.playRound(0, 2); // Player One
 game.playRound(0, 0); // Player Two
 game.playRound(1, 1); // Player One
