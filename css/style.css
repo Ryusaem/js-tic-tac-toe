@@ -11,6 +11,78 @@
   padding: 0;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  gap: 10px;
+}
+
+.board {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 2px;
+
+  height: 500px;
+  width: 500px;
+
+  border: 1px solid black;
+  padding: 2px;
+  background-color: beige;
+
+  position: relative;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  border: 1px solid grey;
+  background: lightyellow;
+  cursor: pointer;
+}
+
+.button-container {
+  display: none;
+  /* border: 2px solid red; */
+  gap: 50px;
+
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 70px;
+
+  height: 440px;
+  width: 500px;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.btn {
+  display: none;
+
+  height: 50px;
+  width: 150px;
+
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--color-base-primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.test {
+  height: 500px;
+  width: 500px;
+}
+
 /* --- FOOTER --- */
 
 .footer {
