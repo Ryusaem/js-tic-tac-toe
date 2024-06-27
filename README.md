@@ -64,6 +64,29 @@ Total:
 ### Useful resources -
 
 [Frontend Mentor](https://www.frontendmentor.io/challenges/) - Formidable resources to make you learn by "doing" awesome project. Highly recommend it.
+[Hex to HSL](https://colordesigner.io/convert/hextohsl)
+[Dark Theme Color - Dracula](https://draculatheme.com/visual-studio-code)
+[SVG to URL Encoder](https://yoksel.github.io/url-encoder/)
+[40percentzinc - SC (main inspiration)](https://replit.com/@40percentzinc/ConnectFourWithDOMSkeleton#script.js)
+[40percentzinc - Building a house fron the inside](https://www.ayweb.dev/blog/building-a-house-from-the-inside-out)
+
+## Model / Inspiration -
+
+- [0xabdul Khalid - SC](https://github.com/0xabdulkhalid/tic-tac-toe)
+  - [html](https://github.com/0xabdulkhalid/tic-tac-toe/blob/main/index.html)
+  - [css](https://github.com/0xabdulkhalid/tic-tac-toe/blob/main/styles.css)
+  - [js](https://github.com/0xabdulkhalid/tic-tac-toe/blob/main/script.js)
+- [0xabdul Khalid - LC](https://0xabdulkhalid.github.io/tic-tac-toe/)
+- [Darion Valdez - SC](https://github.com/DarionV/tic-tac-toe)
+- [Darion Valdez - LC](https://darionv.github.io/tic-tac-toe/)
+- [mooniiDev - SC](https://github.com/mooniiDev/tic-tac-toe-game)
+- [mooniiDev - LC](https://mooniidev.github.io/tic-tac-toe-game/)
+- [Zack MKS - SC](https://github.com/Zakarya-Mks/tic-tac-toe_game)
+- [Zack MKS - LC](https://zakarya-mks.github.io/tic-tac-toe_game/)
+
+mooniiDev
+
+Darion Valdez
 
 ## Author -
 

@@ -99,7 +99,9 @@ function gameBoard() {
 function createCell() {
   let value = ""; // Cell value can be "X", "O", or ""
 
-  const addMark = (player) => (value = player);
+  const addMark = (player) => {
+    value = player;
+  };
 
   const getValue = () => value;
 
@@ -130,7 +132,7 @@ function GameController(
   const players = [
     {
       name: PlayerOneName,
-      mark: "X",
+      mark: `X`,
       score: 0,
     },
     {
@@ -295,6 +297,8 @@ function GameController(
 function ScreenController() {
   // Selectors
   const playerTurnDiv = document.querySelector(".turn");
+  const player1Turn = document.querySelector(".player1-turn");
+  const player2Turn = document.querySelector(".player2-turn");
   const boardDiv = document.querySelector(".board");
 
   const game = GameController(); // Start the game
@@ -309,7 +313,17 @@ function ScreenController() {
     const activePlayer = game.getActivePlayer();
 
     // Display player's turn
-    playerTurnDiv.textContent = `${activePlayer.name}'s turn`;
+    // playerTurnDiv.textContent = `${activePlayer.name}'s turn`;
+
+    // Add active class to the player's turn
+
+    if (activePlayer.mark === "X") {
+      player1Turn.classList.add("active");
+      player2Turn.classList.remove("active");
+    } else {
+      player2Turn.classList.add("active");
+      player1Turn.classList.remove("active");
+    }
 
     // Render board squares
     board.forEach((row, indexRow) => {
@@ -320,12 +334,18 @@ function ScreenController() {
         // Add a class to the cell
         cellButton.classList.add("cell");
 
+        // Create a data attribute to identify the state of the cell
+        cellButton.dataset.fieldState = `set-${cell.getValue()}`;
+
+        // Create a data attribute to identify the player's turn
+        cellButton.dataset.fieldTurn = `turn-${activePlayer.mark}`;
+
         // Create a data attribute to identify the column and row
         cellButton.dataset.column = indexColumn;
         cellButton.dataset.row = indexRow;
 
         // Add the value of the cell
-        cellButton.textContent = cell.getValue();
+        // cellButton.textContent = cell.getValue();
 
         // Append the cell to the board
         boardDiv.appendChild(cellButton);

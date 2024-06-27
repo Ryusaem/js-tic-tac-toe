@@ -2,6 +2,28 @@
   --color-base-primary: hsl(25, 97%, 53%);
   --color-base-bg: hsl(216, 12%, 8%);
   --color-base-text: hsl(217, 12%, 63%);
+
+  /* Dracula */
+  --color-base-bg: hsl(232, 15.79%, 18.63%);
+  /* --color-base-bg-cell: hsl(60, 12%, 63%); maybe for light theme*/
+  --color-base-border-cell: hsl(228, 8%, 52%);
+  /* --color-base-bg-cell: hsl(230, 12%, 63%); */
+  --color-base-bg-cell: hsl(234, 6%, 35%);
+
+  --color-base-text: hsl(60, 5.45%, 89.22%);
+  --color-base-title: hsl(323.65, 55.91%, 63.53%);
+  --color-base-text-commentary: hsl(228.68, 23.56%, 44.12%);
+  --color-base-footer: hsl(33.24, 100%, 70.98%);
+  /* Opional */
+  --color-base-green: hsl(135.84, 64.1%, 61.76%);
+  --color-base-blue: hsl(189.89, 55.15%, 67.65%);
+  --color-base-yellow: hsl(64.36, 100%, 78.43%);
+  --color-base-blue: hsl(190, 76%, 55%);
+  --color-base-orange: hsl(33.24, 100%, 70.98%);
+  --color-base-pink: hsl(323.65, 55.91%, 63.53%);
+  --color-base-white: hsl(60, 5.45%, 89.22%);
+
+  /* 160 23% 52% */
 }
 
 /* --- GLOBAL RESET --- */
@@ -9,6 +31,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: var(--color-base-bg);
+  color: var(--color-base-yellow);
 }
 
 .container {
@@ -23,14 +50,15 @@
 .board {
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  gap: 2px;
+  gap: 30px;
 
-  height: 500px;
-  width: 500px;
+  height: 380px;
+  width: 380px;
 
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 2px;
-  background-color: beige;
+  /* background-color: beige; */
+  /* background-color: var(--color-base-text-commentary); */
 
   position: relative;
 }
@@ -41,9 +69,13 @@
   align-items: center;
   text-align: center;
   font-size: 2rem;
-  border: 1px solid grey;
-  background: lightyellow;
   cursor: pointer;
+
+  border: 2px solid var(--color-base-border-cell);
+  border-radius: 16px;
+  background-color: var(--color-base-bg-cell);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.9); */
+  box-shadow: 0 8px 10px 2px rgba(39, 20, 20, 1);
 }
 
 .button-container {
@@ -78,9 +110,56 @@
   cursor: pointer;
 }
 
-.test {
-  height: 500px;
-  width: 500px;
+.turn {
+  display: flex;
+  gap: 30px;
+}
+
+.btn-player {
+  height: 35px;
+  width: 150px;
+
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-player.player1-turn {
+  background-color: var(--color-base-blue);
+}
+
+.btn-player.player2-turn {
+  background-color: var(--color-base-orange);
+}
+
+.player1-turn.active,
+.player2-turn.active {
+  transition: all 0.5s;
+  transform: scale(1.1);
+  border: 1px solid var(--color-base-white);
+}
+
+[data-field-turn="turn-X"] .player2 {
+  background-color: var(--color-base-green);
+}
+
+.btn-player[data-field-turn="turn-X"] {
+  border: 3px solid red;
+}
+
+[data-field-state="set-X"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' style='fill: hsl(189.89, 55.15%25, 67.65%25);'%3E%3Ctitle%3Exmpp%3C/title%3E%3Cpath d='M12,15.4C9.75,13.09 8,9.54 8,6C2,4 8,6 2,4C2,9.65 6.33,14.11 10.55,16.66C9.38,17.5 8.15,18 7,18C7,19 7,18 7,19C8.2,19 10.03,18.46 12,17.46C13.97,18.46 15.8,19 17,19C17,18 17,19 17,18C15.85,18 14.62,17.5 13.45,16.66C17.66,14.11 22,9.65 22,4C16,6 22,4 16,6C16,9.54 14.25,13.09 12,15.4Z' /%3E%3C/svg%3E");
+}
+
+[data-field-state="set-O"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' style='fill: hsl(33.24, 100%25, 70.98%25);'%3E%3Ctitle%3Ealien-outline%3C/title%3E%3Cpath d='M10.31 10.93C11.33 12.57 11.18 14.5 9.96 15.28C8.74 16.04 6.92 15.33 5.89 13.69C4.87 12.05 5.03 10.1 6.25 9.34C7.47 8.58 9.29 9.29 10.31 10.93M12 17.75C14 17.75 14.5 17 14.5 17C14.5 17 14 19 12 19C10 19 9.5 17.03 9.5 17C9.5 17 10 17.75 12 17.75M17.75 9.34C18.97 10.1 19.13 12.05 18.11 13.69C17.08 15.33 15.26 16.04 14.04 15.28C12.82 14.5 12.67 12.57 13.69 10.93C14.71 9.29 16.53 8.58 17.75 9.34M12 20C14.5 20 20 14.86 20 11C20 7.14 16.41 4 12 4C7.59 4 4 7.14 4 11C4 14.86 9.5 20 12 20M12 2C17.5 2 22 6.04 22 11C22 15.08 16.32 22 12 22C7.68 22 2 15.08 2 11C2 6.04 6.5 2 12 2Z' /%3E%3C/svg%3E");
+  /* background-color: rgba(36, 12, 255, 0.5); */
+  /* background-size: 100% 100%; */
 }
 
 /* --- FOOTER --- */
@@ -88,7 +167,7 @@
 .footer {
   margin-top: auto;
   text-align: center;
-  color: var(--color-base-primary);
+  color: var(--color-base-footer);
 }
 
 .attribution {
@@ -97,14 +176,10 @@
   margin-bottom: 0.5rem;
 }
 
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
 .footer a {
   /* color: var(--color-base-primary-green); */
   text-decoration: none;
-  color: var(--color-base-primary);
+  color: var(--color-base-footer);
 }
 
 .fa-github {
