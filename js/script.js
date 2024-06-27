@@ -122,6 +122,9 @@ function GameController(
   const btnsButton = document.querySelectorAll(".btn");
   const containerButton = document.querySelector(".button-container");
 
+  const player1Turn = document.querySelector(".player1-turn");
+  const player2Turn = document.querySelector(".player2-turn");
+
   const player1Score = document.querySelector(".player1-score");
   const player2Score = document.querySelector(".player2-score");
 
@@ -142,7 +145,7 @@ function GameController(
     },
   ];
 
-  // Active player
+  // Active player variable
   let activePlayer;
 
   // SET active player to player one
@@ -151,11 +154,20 @@ function GameController(
   // GET active player
   const getActivePlayer = () => activePlayer;
 
-  setActivePlayer();
-
   // SWITCH player function
   const switchPlayer = () => {
     activePlayer = activePlayer === players[0] ? players[1] : players[0];
+  };
+
+  // Add active class to the player's turn
+  const addActiveClassToPlayerTurn = () => {
+    if (activePlayer.mark === "X") {
+      player1Turn.classList.add("active");
+      player2Turn.classList.remove("active");
+    } else {
+      player2Turn.classList.add("active");
+      player1Turn.classList.remove("active");
+    }
   };
 
   // Reset Game (After a win or a draw)
@@ -275,16 +287,20 @@ function GameController(
       return;
     }
 
-    switchPlayer();
-    printNewRound();
+    switchPlayer(); // Switch player
+    addActiveClassToPlayerTurn(); // Add active class to the player's turn
+    printNewRound(); // Print the new round
   };
-
-  printNewRound(); // Print the new round
-  printScores(); // Print the scores
 
   // Event Listener
   playAgainButton.addEventListener("click", resetGame); // Play again button
   stopPlayingButton.addEventListener("click", stopPlaying); // Stop playing button
+
+  // Calling few functions
+  setActivePlayer();
+  addActiveClassToPlayerTurn();
+  printNewRound(); // Print the new round
+  printScores(); // Print the scores
 
   return {
     playRound,
@@ -297,8 +313,6 @@ function GameController(
 function ScreenController() {
   // Selectors
   const playerTurnDiv = document.querySelector(".turn");
-  const player1Turn = document.querySelector(".player1-turn");
-  const player2Turn = document.querySelector(".player2-turn");
   const boardDiv = document.querySelector(".board");
 
   const game = GameController(); // Start the game
@@ -314,16 +328,6 @@ function ScreenController() {
 
     // Display player's turn
     // playerTurnDiv.textContent = `${activePlayer.name}'s turn`;
-
-    // Add active class to the player's turn
-
-    if (activePlayer.mark === "X") {
-      player1Turn.classList.add("active");
-      player2Turn.classList.remove("active");
-    } else {
-      player2Turn.classList.add("active");
-      player1Turn.classList.remove("active");
-    }
 
     // Render board squares
     board.forEach((row, indexRow) => {
