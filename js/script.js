@@ -121,6 +121,11 @@ function GameController(
   const stopPlayingButton = document.querySelector(".stop");
   const btnsButton = document.querySelectorAll(".btn");
   const containerButton = document.querySelector(".button-container");
+  const gameEndContainer = document.querySelector(".game-end-container");
+  const messageContainer = document.querySelector(".message-container");
+
+  const winnerDiv = document.querySelector(".winner");
+  const gameMessage = document.querySelector("#game-message");
 
   const player1Turn = document.querySelector(".player1-turn");
   const player2Turn = document.querySelector(".player2-turn");
@@ -147,12 +152,19 @@ function GameController(
 
   // Active player variable
   let activePlayer;
+  let winner;
 
   // SET active player to player one
   const setActivePlayer = () => (activePlayer = players[0]);
 
   // GET active player
   const getActivePlayer = () => activePlayer;
+
+  // SET winner
+  const setWinner = (player) => (winner = player);
+
+  // GET winner
+  const getWinner = () => winner;
 
   // SWITCH player function
   const switchPlayer = () => {
@@ -202,28 +214,46 @@ function GameController(
 
   // After the game ends, ask for another game
   const askForAnotherGame = () => {
-    console.log("Game ended. Click 'Play Again' to start a new game.");
+    // console.log("Game ended. Click 'Play Again' to start a new game.");
 
     showContainerAndButtons();
   };
 
   // Hide the container and buttons
   const hideContainerAndButtons = () => {
-    containerButton.style.display = "none"; // Hide the container after starting a new game
+    // gameEndContainer.style.display = "none"; // Hide the game end container
+    gameEndContainer.classList.remove("active");
 
-    btnsButton.forEach((button) => {
-      button.style.display = "none"; // Hide the button after starting a new game
-    });
+    // containerButton.style.display = "none"; // Hide the container after starting a new game
+
+    // btnsButton.forEach((button) => {
+    //   button.style.display = "none"; // Hide the button after starting a new game
+    // });
   };
 
   // Show the container and buttons
   const showContainerAndButtons = () => {
-    // Display the container button
-    containerButton.style.display = "flex";
+    // gameEndContainer.style.display = "grid";
 
-    btnsButton.forEach((button) => {
-      button.style.display = "block"; // Show the button after starting a new game
-    });
+    gameEndContainer.classList.add("active");
+
+    // Display the container button
+    // containerButton.style.display = "grid";
+
+    // btnsButton.forEach((button) => {
+    //   button.style.display = "block"; // Show the button after starting a new game
+    // });
+  };
+
+  const showGameMessage = (message, tie = false) => {
+    const messageParagraph = document.getElementById("game-message");
+    const congratulation = document.querySelector(".congratulation");
+
+    if (!tie) {
+      congratulation.textContent = "CONGRATULATIONS !";
+    }
+
+    messageParagraph.textContent = message; // Set the message text
   };
 
   // PRINT Board and Player's turn
@@ -250,6 +280,48 @@ function GameController(
     );
   };
 
+  // UPDATE the winner display
+  const updateWinnerDisplay = () => {
+    let imageUrl;
+    let messageColor;
+
+    switch (getWinner()) {
+      case players[0].name:
+        imageUrl = getComputedStyle(document.documentElement)
+          .getPropertyValue("--field-state-set-X")
+          .trim();
+        messageColor = "var(--color-base-blue)";
+        break;
+
+      case players[1].name:
+        imageUrl = getComputedStyle(document.documentElement)
+          .getPropertyValue("--field-state-set-O")
+          .trim();
+        messageColor = "var(--color-base-orange)";
+        break;
+
+      case "draw":
+        imageUrl = getComputedStyle(document.documentElement)
+          .getPropertyValue("--draw-icon")
+          .trim();
+        messageColor = "var(--color-base-yellow)";
+        break;
+
+      default:
+        console.log("Invalid winner");
+        return; // Exit the function if the winner is not recognized
+    }
+
+    // Apply the determined styles
+    winnerDiv.style.backgroundImage = `${imageUrl}`;
+
+    // Changing the background color of the play again button
+    playAgainButton.style.backgroundColor = messageColor;
+
+    // Changing the color of the game message
+    gameMessage.style.color = messageColor;
+  };
+
   // PLAY round
   const playRound = (row, column) => {
     console.log(
@@ -269,20 +341,28 @@ function GameController(
 
     // Check if there is a winner
     if (board.checkWin(getActivePlayer().mark)) {
-      console.log(`${getActivePlayer().name} wins!`);
+      setWinner(getActivePlayer().name); // Set the winner
+
+      updateWinnerDisplay(); // Update the winner display
 
       updateScore(); // Increment the score of the winner
 
       askForAnotherGame();
+
+      showGameMessage(`${winner} is the winner!`); // Show the message
 
       return;
     }
 
     // Check if there is a draw
     if (board.checkDraw()) {
-      console.log("It's a draw!");
+      setWinner("draw"); // Set the winner to draw
+
+      updateWinnerDisplay(); // Update the winner display
 
       askForAnotherGame();
+
+      showGameMessage("It's a draw!", true); // Show the message
 
       return;
     }
