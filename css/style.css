@@ -179,6 +179,7 @@ body {
   display: grid;
   gap: 50px;
   justify-content: center;
+  justify-items: center;
   align-items: center;
   grid-template-columns: repeat(2, minmax(100px, 300px));
 }
@@ -404,7 +405,7 @@ body {
     /* align-items: center; */
     height: 60vh;
     /* gap: 10px; */
-    margin-bottom: 30vh; /* Footer */
+    margin-bottom: 35vh; /* Footer */
   }
 
   .board {
@@ -445,5 +446,22 @@ body {
     right: 5%;
     top: 5%;
     /* top: 75%; */
+  }
+
+  .game-end-container {
+    /* display: none; */
+
+    gap: 0px;
+
+    height: 40vh;
+    width: 100vw;
+
+    top: 16%;
+  }
+
+  .button-container button {
+    height: 70px;
+    font-size: 1.2rem;
+    width: 80%;
   }
 }
