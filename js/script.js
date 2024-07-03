@@ -127,6 +127,7 @@ function GameController(
 
   const player1Turn = document.querySelector(".player1-turn");
   const player2Turn = document.querySelector(".player2-turn");
+  const resetBtn = document.querySelector(".score-container__reset-btn");
 
   const player1Score = document.querySelector(".score-container__player1-btn");
   const player2Score = document.querySelector(".score-container__player2-btn");
@@ -184,11 +185,10 @@ function GameController(
 
   // Reset Game (After a win or a draw)
   const resetGame = () => {
-    console.log("Starting a new game...");
-
     board.resetBoard(); // Reset the board
 
     setActivePlayer(); // Player One starts first
+    addActiveClassToPlayerTurn(); // Add active class to the player's turn
 
     printNewRound(); // Print the new round
 
@@ -415,6 +415,7 @@ function GameController(
   // Event Listener
   playAgainButton.addEventListener("click", resetGame); // Play again button
   stopPlayingButton.addEventListener("click", stopPlaying); // Stop playing button
+  resetBtn.addEventListener("click", resetGame); // Reset button
 
   // Calling few functions
   setActivePlayer();
