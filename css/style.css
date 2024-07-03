@@ -223,16 +223,20 @@ body {
 .turn {
   display: flex;
   gap: 30px;
+  margin-bottom: 20px;
 }
 
 .btn-player {
-  height: 35px;
-  width: 150px;
+  /* height: 35px; */
+  /* width: 150px; */
+  height: 50px;
+  width: 50px;
 
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   border: none;
-  border-radius: 6px;
+  /* border-radius: 6px; */
+  border-radius: 100%;
 
   display: flex;
   justify-content: center;
@@ -241,10 +245,12 @@ body {
 
 .btn-player.player1-turn {
   background-color: var(--color-base-blue);
+  background-image: var(--field-state-set-X-hover);
 }
 
 .btn-player.player2-turn {
   background-color: var(--color-base-orange);
+  background-image: var(--field-state-set-O-hover);
 }
 
 .player1-turn,
@@ -265,6 +271,55 @@ body {
 
 [data-field-state="set-O"] {
   background-image: var(--field-state-set-O);
+}
+
+/* Score */
+.score-container__score-display {
+  position: absolute;
+  display: grid;
+  gap: 80px;
+  left: 6%;
+  top: 19%;
+}
+
+.score-container__player1-btn,
+.score-container__player2-btn,
+.score-container__tie-btn {
+  height: 70px;
+  width: 150px;
+  /* padding: 0.5rem 1rem; */
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.score-container__player1-btn {
+  background-color: var(--color-base-blue);
+}
+
+.score-container__player2-btn {
+  background-color: var(--color-base-orange);
+}
+
+.score-container__tie-btn {
+  background-color: var(--color-base-gray-light);
+}
+
+.score-container .player-score-name {
+  font-size: 1.1rem;
+  /* color: var(--color-base-text); */
+}
+
+.score-container .player-score-value {
+  font-size: 1.4rem;
+  font-weight: bold;
+  /* color: var(--color-base-blue); */
 }
 
 /* --- FOOTER --- */
@@ -314,5 +369,33 @@ body {
   100% {
     transform: scale(1);
     opacity: 0.5; /* End slightly faded */
+  }
+}
+
+/* --- MEDIA QUERY --- */
+@media screen and (max-width: 768px) {
+  .score-container__score-display {
+    grid-template-columns: 50px 50px 50px;
+    top: 75%;
+    left: 0;
+    gap: 90px;
+  }
+
+  .score-container__player1-btn,
+  .score-container__player2-btn,
+  .score-container__tie-btn {
+    height: 60px;
+    width: 130px;
+  }
+
+  .score-container .player-score-name {
+    font-size: 0.9rem;
+    /* color: var(--color-base-text); */
+  }
+
+  .score-container .player-score-value {
+    font-size: 1rem;
+    font-weight: bold;
+    /* color: var(--color-base-blue); */
   }
 }

@@ -119,10 +119,8 @@ function GameController(
   // Selectors
   const playAgainButton = document.querySelector(".again");
   const stopPlayingButton = document.querySelector(".stop");
-  const btnsButton = document.querySelectorAll(".btn");
-  const containerButton = document.querySelector(".button-container");
+
   const gameEndContainer = document.querySelector(".game-end-container");
-  const messageContainer = document.querySelector(".message-container");
 
   const winnerDiv = document.querySelector(".winner");
   const gameMessage = document.querySelector("#game-message");
@@ -130,8 +128,9 @@ function GameController(
   const player1Turn = document.querySelector(".player1-turn");
   const player2Turn = document.querySelector(".player2-turn");
 
-  const player1Score = document.querySelector(".player1-score");
-  const player2Score = document.querySelector(".player2-score");
+  const player1Score = document.querySelector(".score-container__player1-btn");
+  const player2Score = document.querySelector(".score-container__player2-btn");
+  const tieScore = document.querySelector(".score-container__tie-btn");
 
   // Start the game board
   const board = gameBoard();
@@ -153,6 +152,7 @@ function GameController(
   // Active player variable
   let activePlayer;
   let winner;
+  let tiedMatches = 0;
 
   // SET active player to player one
   const setActivePlayer = () => (activePlayer = players[0]);
@@ -206,6 +206,8 @@ function GameController(
     setActivePlayer(); // Player One starts first
 
     players[0].score = 0; // Reset the score of player one
+    players[1].score = 0; // Reset the score of player two
+    tiedMatches = 0; // Reset the tied matches
 
     game.updateScreen(); // Update the screen
 
@@ -264,11 +266,48 @@ function GameController(
 
   // PRINT scores
   const printScores = () => {
-    // console.log(
-    //   `Score: ${players[0].name}: ${players[0].score}, ${players[1].name}: ${players[1].score}`
-    // );
-    player1Score.textContent = `${players[0].name}: ${players[0].score}`;
-    player2Score.textContent = `${players[1].name}: ${players[1].score}`;
+    // player1Score.innerHTML = `${players[0].name}<br>${players[0].score}`;
+    // player2Score.innerHTML = `${players[1].name}<br>${players[1].score}`;
+    // tieScore.innerHTML = `Ties<br>${tiedMatches}`;
+
+    // For player 1
+    const player1Name = document.createElement("p");
+    player1Name.className = "player-score-name";
+    player1Name.textContent = players[0].name;
+
+    const player1ScoreValue = document.createElement("p");
+    player1ScoreValue.className = "player-score-value";
+    player1ScoreValue.textContent = players[0].score;
+
+    player1Score.innerHTML = ""; // Clear existing content
+    player1Score.appendChild(player1Name);
+    player1Score.appendChild(player1ScoreValue);
+
+    // For player 2
+    const player2Name = document.createElement("p");
+    player2Name.className = "player-score-name";
+    player2Name.textContent = players[1].name;
+
+    const player2ScoreValue = document.createElement("p");
+    player2ScoreValue.className = "player-score-value";
+    player2ScoreValue.textContent = players[1].score;
+
+    player2Score.innerHTML = ""; // Clear existing content
+    player2Score.appendChild(player2Name);
+    player2Score.appendChild(player2ScoreValue);
+
+    // For ties
+    const tieName = document.createElement("p");
+    tieName.className = "player-score-name";
+    tieName.textContent = "Ties";
+
+    const tieScoreValue = document.createElement("p");
+    tieScoreValue.className = "player-score-value";
+    tieScoreValue.textContent = tiedMatches;
+
+    tieScore.innerHTML = ""; // Clear existing content
+    tieScore.appendChild(tieName);
+    tieScore.appendChild(tieScoreValue);
   };
 
   // UPDATE the score
@@ -357,6 +396,7 @@ function GameController(
     // Check if there is a draw
     if (board.checkDraw()) {
       setWinner("draw"); // Set the winner to draw
+      tiedMatches++; // Increment the tied matches
 
       updateWinnerDisplay(); // Update the winner display
 
