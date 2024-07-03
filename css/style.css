@@ -93,14 +93,18 @@ body {
 
 .cell:hover {
   background-color: var(--color-base-bg);
-  transform: scale3d(1.05, 1.05, 1.05);
+  transform: scale3d(0.9, 0.9, 0.9);
 }
 
-.cell[data-field-turn="turn-X"]:hover {
+.cell[data-field-turn="turn-X"]:hover:not([data-field-state="set-X"]):not(
+    [data-field-state="set-O"]
+  ) {
   background-image: var(--field-state-set-X-hover);
 }
 
-.cell[data-field-turn="turn-O"]:hover {
+.cell[data-field-turn="turn-O"]:hover:not([data-field-state="set-X"]):not(
+    [data-field-state="set-O"]
+  ) {
   background-image: var(--field-state-set-O-hover);
 }
 
