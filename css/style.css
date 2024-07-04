@@ -116,6 +116,7 @@ body {
 }
 
 /* --- Game Board - Special hover effect on cells (not adding effect on cells that already possess a data-field-state to not confuse the player */
+
 .board__cell[data-field-turn="turn-X"]:hover:not(
     [data-field-state="set-X"]
   ):not([data-field-state="set-O"]) {
@@ -334,6 +335,8 @@ body {
 
 .game-end-container__winner-icon {
   background-image: var(--draw-icon);
+  background-repeat: no-repeat;
+  background-position: center;
   height: 60px;
   width: 60px;
 }
