@@ -92,13 +92,21 @@ body {
   background-color: var(--color-base-bg-cell);
   box-shadow: 0 8px 10px 2px rgba(39, 20, 20, 1);
   /* transition: transform all 0.4s; */
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-.board__cell.clicked {
-  transform: scale(2); /* Scale up the button */
+/* Trying few stuff for phone device with hover effect */
+.board__cell:hover,
+.board__cell:focus,
+.board__cell:active {
   background-color: var(--color-base-bg);
+  transform: scale3d(0.9, 0.9, 0.9);
 }
+/* NOT WORKING
+.board__cell.clicked {
+  transform: scale(2); 
+  background-color: var(--color-base-bg);
+} */
 
 /* Game board fields ICONs For X or O.*/
 
@@ -116,13 +124,16 @@ body {
   background-image: var(--field-state-set-O);
 }
 
-.board__cell:hover {
-  background-color: var(--color-base-bg);
-  transform: scale3d(0.9, 0.9, 0.9);
-}
-
 /* --- Game Board - Special hover effect on cells (not adding effect on cells that already possess a data-field-state to not confuse the player */
-
+.board__cell[data-field-turn="turn-X"]:hover:not(
+    [data-field-state="set-X"]
+  ):not([data-field-state="set-O"]),
+.board__cell[data-field-turn="turn-O"]:hover:not(
+    [data-field-state="set-X"]
+  ):not([data-field-state="set-O"]) {
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .board__cell[data-field-turn="turn-X"]:hover:not(
     [data-field-state="set-X"]
   ):not([data-field-state="set-O"]) {
