@@ -117,13 +117,19 @@ function GameController(
   PlayerTwoName = "Player Two"
 ) {
   // Selectors
-  const playAgainButton = document.querySelector(".again");
-  const stopPlayingButton = document.querySelector(".stop");
+  const playAgainButton = document.querySelector(
+    ".game-end-container__again-btn"
+  );
+  const stopPlayingButton = document.querySelector(
+    ".game-end-container__stop-btn"
+  );
 
   const gameEndContainer = document.querySelector(".game-end-container");
 
-  const winnerDiv = document.querySelector(".winner");
-  const gameMessage = document.querySelector("#game-message");
+  const winnerDiv = document.querySelector(".game-end-container__winner-icon");
+  const gameMessage = document.querySelector(
+    ".game-end-container__game-message"
+  );
 
   const player1Turn = document.querySelector(".score-container__player1-turn");
   const player2Turn = document.querySelector(".score-container__player2-turn");
@@ -248,14 +254,16 @@ function GameController(
   };
 
   const showGameMessage = (message, tie = false) => {
-    const messageParagraph = document.getElementById("game-message");
-    const congratulation = document.querySelector(".congratulation");
+    // const messageParagraph = document.getElementById("game-message");
+    const congratulation = document.querySelector(
+      ".game-end-container__congratulation"
+    );
 
     if (!tie) {
       congratulation.textContent = "CONGRATULATIONS !";
     }
 
-    messageParagraph.textContent = message; // Set the message text
+    gameMessage.textContent = message; // Set the message text
   };
 
   // PRINT Board and Player's turn

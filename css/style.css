@@ -143,7 +143,7 @@ body {
   transition: all 0.5s, visibility 0s 0s; /* Ensure visibility changes immediately */
 }
 
-.message-container {
+.game-end-container__message-container {
   /* display: none; */
   display: grid;
   gap: 30px;
@@ -152,30 +152,30 @@ body {
   justify-items: center;
 }
 
-.congratulation {
+.game-end-container__congratulation {
   font-size: 1.5rem;
   color: var(--color-base-text);
 }
 
-#game-message {
+.game-end-container__game-message {
   font-size: 2rem;
   /* color: var(--color-base-blue); */
 }
 
-.icon-container {
+.game-end-container__icon-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
 
-.winner {
+.game-end-container__winner-icon {
   background-image: var(--draw-icon);
   height: 60px;
   width: 60px;
 }
 
-.button-container {
+.game-end-container__button-container {
   display: grid;
   gap: 50px;
   justify-content: center;
@@ -203,23 +203,23 @@ body {
   font-variant: small-caps;
 }
 
-.btn.stop,
-.btn.again {
+.game-end-container__stop-btn,
+.game-end-container__again-btn {
   padding: 0.5rem 2.5rem;
   font-weight: bold;
   transition: all 0.5s;
 }
 
-.btn.stop {
+.game-end-container__stop-btn {
   background-color: var(--color-base-gray-light);
 }
 
-.btn.stop:hover,
-.btn.again:hover {
+.game-end-container__stop-btn:hover,
+.game-end-container__again-btn:hover {
   transform: scale(1.1);
 }
 
-.btn.again {
+.game-end-container__again-btn {
   background-color: var(--color-base-orange);
 }
 
@@ -459,7 +459,7 @@ body {
     top: 16%;
   }
 
-  .button-container button {
+  .game-end-container__button-container button {
     height: 70px;
     font-size: 1.2rem;
     width: 80%;
