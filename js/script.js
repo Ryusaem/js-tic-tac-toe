@@ -280,11 +280,11 @@ function GameController(
 
     // For player 1
     const player1Name = document.createElement("p");
-    player1Name.className = "player-score-name";
+    player1Name.className = "score-container__player-score-name";
     player1Name.textContent = players[0].name;
 
     const player1ScoreValue = document.createElement("p");
-    player1ScoreValue.className = "player-score-value";
+    player1ScoreValue.className = ".score-container__player-score-value";
     player1ScoreValue.textContent = players[0].score;
 
     player1Score.innerHTML = ""; // Clear existing content
@@ -464,7 +464,7 @@ function ScreenController() {
         const cellButton = document.createElement("button");
 
         // Add a class to the cell
-        cellButton.classList.add("cell");
+        cellButton.classList.add("board__cell");
 
         // Create a data attribute to identify the state of the cell
         cellButton.dataset.fieldState = `set-${cell.getValue()}`;
