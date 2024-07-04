@@ -293,11 +293,11 @@ function GameController(
 
     // For player 2
     const player2Name = document.createElement("p");
-    player2Name.className = "player-score-name";
+    player2Name.className = "score-container__player-score-name";
     player2Name.textContent = players[1].name;
 
     const player2ScoreValue = document.createElement("p");
-    player2ScoreValue.className = "player-score-value";
+    player2ScoreValue.className = "score-container__player-score-value";
     player2ScoreValue.textContent = players[1].score;
 
     player2Score.innerHTML = ""; // Clear existing content
@@ -306,11 +306,11 @@ function GameController(
 
     // For ties
     const tieName = document.createElement("p");
-    tieName.className = "player-score-name";
+    tieName.className = "score-container__player-score-name";
     tieName.textContent = "Ties";
 
     const tieScoreValue = document.createElement("p");
-    tieScoreValue.className = "player-score-value";
+    tieScoreValue.className = "score-container__player-score-value";
     tieScoreValue.textContent = tiedMatches;
 
     tieScore.innerHTML = ""; // Clear existing content
