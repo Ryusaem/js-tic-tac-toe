@@ -483,10 +483,10 @@ body {
   .game-end-container {
     gap: 0px;
 
-    height: 40vh;
+    height: 48vh;
     width: 100vw;
 
-    top: 16%;
+    top: 20%;
   }
 
   .game-end-container__button-container button {
