@@ -265,6 +265,12 @@ body {
   animation: heartbeat 3s ease-in-out infinite;
 }
 
+[data-field-state="set-X"],
+[data-field-state="set-O"] {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 [data-field-state="set-X"] {
   background-image: var(--field-state-set-X);
 }
