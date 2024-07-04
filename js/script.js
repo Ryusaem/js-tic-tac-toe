@@ -125,8 +125,8 @@ function GameController(
   const winnerDiv = document.querySelector(".winner");
   const gameMessage = document.querySelector("#game-message");
 
-  const player1Turn = document.querySelector(".player1-turn");
-  const player2Turn = document.querySelector(".player2-turn");
+  const player1Turn = document.querySelector(".score-container__player1-turn");
+  const player2Turn = document.querySelector(".score-container__player2-turn");
   const resetBtn = document.querySelector(".score-container__reset-btn");
 
   const player1Score = document.querySelector(".score-container__player1-btn");
@@ -433,7 +433,6 @@ function GameController(
 
 function ScreenController() {
   // Selectors
-  const playerTurnDiv = document.querySelector(".turn");
   const boardDiv = document.querySelector(".board");
 
   const game = GameController(); // Start the game

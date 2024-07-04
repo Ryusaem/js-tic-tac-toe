@@ -223,7 +223,7 @@ body {
   background-color: var(--color-base-orange);
 }
 
-.turn {
+.score-container__turn-container {
   display: flex;
   gap: 30px;
   margin-bottom: 20px;
@@ -246,23 +246,23 @@ body {
   align-items: center;
 }
 
-.btn-player.player1-turn {
+.score-container__player1-turn {
   background-color: var(--color-base-blue);
   background-image: var(--field-state-set-X-hover);
 }
 
-.btn-player.player2-turn {
+.score-container__player2-turn {
   background-color: var(--color-base-orange);
   background-image: var(--field-state-set-O-hover);
 }
 
-.player1-turn,
-.player2-turn {
+.score-container__player1-turn,
+.score-container__player2-turn {
   transition: all 1s;
 }
 
-.player1-turn.active,
-.player2-turn.active {
+.score-container__player1-turn.active,
+.score-container__player2-turn.active {
   /* transform: scale(1.2); */
   border: 1px solid var(--color-base-white);
   animation: heartbeat 3s ease-in-out infinite;
