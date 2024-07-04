@@ -24,7 +24,7 @@ function gameBoard() {
       .map((row) => row.map((cell) => cell.getValue()).join(" | "))
       .join("\n---------\n");
 
-    console.log(boardWithCellValues);
+    // console.log(boardWithCellValues);
   };
 
   // Check if there is a winner
@@ -269,7 +269,7 @@ function GameController(
   // PRINT Board and Player's turn
   const printNewRound = () => {
     board.printBoard(); // Print the board
-    console.log(`${getActivePlayer().name}'s turn.`);
+    // console.log(`${getActivePlayer().name}'s turn.`);
   };
 
   // PRINT scores
@@ -371,11 +371,11 @@ function GameController(
 
   // PLAY round
   const playRound = (row, column) => {
-    console.log(
-      `Marking ${
-        getActivePlayer().name
-      }'s mark into row ${row} & column ${column}...`
-    );
+    // console.log(
+    //   `Marking ${
+    //     getActivePlayer().name
+    //   }'s mark into row ${row} & column ${column}...`
+    // );
 
     // Verify if the player move is successful
     const success = board.playerMove(row, column, getActivePlayer().mark);
@@ -481,6 +481,36 @@ function ScreenController() {
 
         // Append the cell to the board
         boardDiv.appendChild(cellButton);
+
+        // const activateBtn = (element) => {
+        //   function removeTransition(e) {
+        //     console.log(`test: ${e.propertyName}`);
+        //     console.log(element.classList);
+        //     if (e.propertyName !== "transform") return;
+        //     e.target.classList.remove("clicked");
+        //     console.log("Transition ended");
+        //     console.log(element.classList);
+        //   }
+        //   // Add the clicked class
+        //   element.classList.add("clicked");
+
+        //   cellButton.addEventListener("transitionend", () =>
+        //     console.log("Transition ended")
+        //   );
+
+        //   console.log(element.classList);
+        // };
+
+        // cellButton.addEventListener("click", () => activateBtn(cellButton));
+
+        // cellButton.addEventListener("transitionend", (e) => {
+        //   console.log(e.propertyName);
+        //   if (e.propertyName !== "transform") return;
+        //   e.target.classList.remove("clicked");
+        //   console.log(e.target.classList);
+        //   // console.log("Transition ended");
+        //   // console.log(this.classList);
+        // });
       });
     });
 

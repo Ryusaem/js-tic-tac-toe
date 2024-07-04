@@ -91,7 +91,13 @@ body {
   border-radius: 16px;
   background-color: var(--color-base-bg-cell);
   box-shadow: 0 8px 10px 2px rgba(39, 20, 20, 1);
-  transition: all 0.4s;
+  /* transition: transform all 0.4s; */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.board__cell.clicked {
+  transform: scale(2); /* Scale up the button */
+  background-color: var(--color-base-bg);
 }
 
 /* Game board fields ICONs For X or O.*/
@@ -493,5 +499,14 @@ body {
     height: 70px;
     font-size: 1.2rem;
     width: 80%;
+  }
+
+  /* Apply basic styles for touch interactions */
+  .score-container__reset-btn {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .score-container__reset-btn:focus {
+    transform: rotate(100deg);
   }
 }
