@@ -240,6 +240,7 @@ function GameController(
     board.resetBoard(); // Reset the board
 
     setActivePlayer(); // Player One starts first
+    addActiveClassToPlayerTurn(); // Add active class to the player's turn
 
     players[0].score = 0; // Reset the score of player one
     players[1].score = 0; // Reset the score of player two

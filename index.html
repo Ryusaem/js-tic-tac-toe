@@ -32,27 +32,23 @@
 
     <div class="container">
 
-        <div class="score-container">
+        <div class="score-container__turn-container">
+            <button class="score-container__player1-turn score-container__btn-player"></button>
+            <button class="score-container__player2-turn score-container__btn-player"></button>
+        </div>
 
-            <div class="score-container__turn-container">
-                <button class="score-container__player1-turn score-container__btn-player"></button>
-                <button class="score-container__player2-turn score-container__btn-player"></button>
-            </div>
+        <div class="score-container__score-display">
+            <!-- <button class="player1-score btn"></button> -->
+            <button class="score-container__player1-btn btn"></button>
 
-            <div class="score-container__score-display">
-                <!-- <button class="player1-score btn"></button> -->
-                <button class="score-container__player1-btn btn"></button>
+            <button class="score-container__tie-btn btn"></button>
 
-                <button class="score-container__tie-btn btn"></button>
+            <button class="score-container__player2-btn btn"></button>
 
-                <button class="score-container__player2-btn btn"></button>
+        </div>
 
-            </div>
-
-            <div class="score-container__reset-display">
-                <button class="score-container__reset-btn btn"></button>
-            </div>
-
+        <div class="score-container__reset-display">
+            <button class="score-container__reset-btn btn"></button>
         </div>
 
         <div class="board"></div>
@@ -79,25 +75,27 @@
 
         <section class="game-initializer disabled"></section>
 
+        <footer class="footer">
+            <div class="attribution">
+                Challenge by <a href="https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe"
+                    target="_blank">The Odin Project</a>.
+                Coded by <a href="https://github.com/Ryusaem">Ryusaem</a>.
+            </div>
+            <p>
+                Copyright ©
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>
+                <a href="https://github.com/Ryusaem" target="_blank">
+                    Ryusaem
+                    <i class="fa-brands fa-github fa-beat-fade"></i>
+                </a>
+            </p>
+        </footer>
+
     </div>
 
-    <footer class="footer">
-        <div class="attribution">
-            Challenge by <a href="https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe"
-                target="_blank">The Odin Project</a>.
-            Coded by <a href="https://github.com/Ryusaem">Ryusaem</a>.
-        </div>
-        <p>
-            Copyright ©
-            <script>
-                document.write(new Date().getFullYear())
-            </script>
-            <a href="https://github.com/Ryusaem" target="_blank">
-                Ryusaem
-                <i class="fa-brands fa-github fa-beat-fade"></i>
-            </a>
-        </p>
-    </footer>
+
 </body>
 
 </html>
