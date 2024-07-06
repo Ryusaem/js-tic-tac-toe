@@ -34,7 +34,7 @@ function gameBoard() {
         cellButton.dataset.fieldState = `set-${cell.getValue()}`;
 
         // Create a data attribute to identify the player's turn
-        cellButton.dataset.fieldTurn = `turn-${activePlayer.mark}`;
+        cellButton.dataset.fieldTurn = `turn-${activePlayer}`;
 
         // Create a data attribute to identify the column and row
         cellButton.dataset.column = indexColumn;
@@ -303,53 +303,32 @@ function GameController(
 
   // PRINT scores
   const printScores = () => {
-    // For player 1
-    const player1Name = document.createElement("p");
-    player1Name.className = "score-container__player-score-name";
-    player1Name.textContent = players[0].name;
+    function updatePlayerScore(playerScoreElement, player) {
+      const playerName = document.createElement("p");
+      playerName.className = "score-container__player-score-name";
+      playerName.textContent = player.name;
 
-    const player1ScoreValue = document.createElement("p");
-    player1ScoreValue.className = ".score-container__player-score-value";
-    player1ScoreValue.textContent = players[0].score;
+      const playerScoreValue = document.createElement("p");
+      playerScoreValue.className = "score-container__player-score-value";
+      playerScoreValue.textContent = player.score;
 
-    player1Score.innerHTML = ""; // Clear existing content
-    player1Score.appendChild(player1Name);
-    player1Score.appendChild(player1ScoreValue);
+      playerScoreElement.innerHTML = ""; // Clear existing content
+      playerScoreElement.appendChild(playerName);
+      playerScoreElement.appendChild(playerScoreValue);
+    }
 
-    // For player 2
-    const player2Name = document.createElement("p");
-    player2Name.className = "score-container__player-score-name";
-    player2Name.textContent = players[1].name;
-
-    const player2ScoreValue = document.createElement("p");
-    player2ScoreValue.className = "score-container__player-score-value";
-    player2ScoreValue.textContent = players[1].score;
-
-    player2Score.innerHTML = ""; // Clear existing content
-    player2Score.appendChild(player2Name);
-    player2Score.appendChild(player2ScoreValue);
-
-    // For ties
-    const tieName = document.createElement("p");
-    tieName.className = "score-container__player-score-name";
-    tieName.textContent = "Ties";
-
-    const tieScoreValue = document.createElement("p");
-    tieScoreValue.className = "score-container__player-score-value";
-    tieScoreValue.textContent = tiedMatches;
-
-    tieScore.innerHTML = ""; // Clear existing content
-    tieScore.appendChild(tieName);
-    tieScore.appendChild(tieScoreValue);
+    updatePlayerScore(player1Score, players[0]);
+    updatePlayerScore(player2Score, players[1]);
+    updatePlayerScore(tieScore, { name: "Ties", score: tiedMatches });
   };
 
-  // UPDATE the score
+  // UPDATE the score locally
   const updateScore = () => {
     activePlayer.score++; // Update the score;
 
-    console.log(
-      `Score updated: ${players[0].name}: ${players[0].score}, ${players[1].name}: ${players[1].score}`
-    );
+    // console.log(
+    //   `Score updated: ${players[0].name}: ${players[0].score}, ${players[1].name}: ${players[1].score}`
+    // );
   };
 
   // UPDATE the winner display
