@@ -574,4 +574,12 @@ body {
     height: auto;
     width: auto;
   }
+
+  .game-end-container {
+    gap: 0px;
+    height: 45vh;
+    width: 80vw;
+    top: 15%;
+    left: 15%;
+  }
 }
