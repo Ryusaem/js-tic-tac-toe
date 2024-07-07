@@ -40,10 +40,6 @@ function gameBoard() {
         cellButton.dataset.column = indexColumn;
         cellButton.dataset.row = indexRow;
 
-        // Add the value of the cell
-        // cellButton.textContent = cell.getValue();
-
-        // Append the cell to the board
         boardDiv.appendChild(cellButton);
       });
     });
@@ -147,6 +143,9 @@ function GameController(
   PlayerTwoName = "Player Two"
 ) {
   // Selectors
+  const boardCells = document.querySelectorAll(".board__cell");
+  const boards = document.querySelector(".board");
+
   const playAgainButton = document.querySelector(
     ".game-end-container__again-btn"
   );
@@ -190,6 +189,25 @@ function GameController(
   let activePlayer;
   let winner;
   let tiedMatches = 0;
+
+  // not workinkg
+  // const activateClickedClassBtn = (element) => {
+  //   function removeClickedClass(event) {
+  //     console.log("Transition ...");
+  //     if (event.propertyName !== "transform") return;
+  //     event.target.classList.remove("clicked");
+  //     console.log("Transition ended");
+  //   }
+
+  //   console.log("Transition started");
+  //   element.classList.add("clicked");
+
+  //   element.addEventListener("click", removeClickedClass);
+  //   element.addEventListener("transitionend", (event) => {
+  //     console.log("transitionend event fired for:", element);
+  //     removeClickedClass(event);
+  //   });
+  // };
 
   // SET active player to player one
   const setActivePlayer = () => (activePlayer = players[0]);
@@ -425,9 +443,11 @@ function GameController(
     printNewRound(); // Print the new round
   };
 
-  // Event Listener
-  playAgainButton.addEventListener("click", resetGame); // Play again button
+  // Play again button
+  playAgainButton.addEventListener("click", resetGame);
+
   stopPlayingButton.addEventListener("click", stopPlaying); // Stop playing button
+
   resetBtn.addEventListener("click", resetGame); // Reset button
 
   // Calling few functions
